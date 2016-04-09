@@ -14,10 +14,10 @@ angular.module('myNewProjectApp')
       getDataFromTemp:function(){
         return tmpData;
       },
-      updateHotel:function(updateRecipeData){
-        console.log("Updating object id is >>>",updateRecipeData._id)
-        var id = updateRecipeData._id;
-        return $http.put('/api/shops/'+id,updateRecipeData);
+      updateHotel:function(updateHotelData){
+        console.log("Updating object id is >>>",updateHotelData._id)
+        var id = updateHotelData._id;
+        return $http.put('/api/shops/custom/'+id,updateHotelData);
       },
       deleteHotelItem:function(getMenuDetails){
         console.log("Deleting object id is >>>",getMenuDetails._id)

@@ -10,7 +10,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="row in restrolist">
+			<tr ng-repeat="row in restrolist track by $index">
 				<td>{{row.name}}</td>
 				<td>
 				<button type="button" ng-click="updateMenuItem(row)" class="btn btn-sm btn-success">

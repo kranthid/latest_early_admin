@@ -1,6 +1,7 @@
 <navbar></navbar>
 <div class="container">
   <h3>{{formTitle}}</h3><br/>
+  {{updateResult}}
   <form class="form-horizontal" role="form">
     <div class="form-group">
       <label class="control-label col-sm-2" for="title">Hotel Name</label>
@@ -28,9 +29,10 @@
           </thead>
           <tbody>
           <tr ng-repeat="row in dataTobeUpdated.mcard">
-            <td contenteditable>{{row.name}}</td>
-            <td contenteditable>{{row.price}}</td>
-            <td contenteditable>{{row.category}}</td>
+            <td contenteditable ng-model="row.name">{{row.name}}</td>
+            <td contenteditable ng-model="row.price">{{row.price}}</td>
+            <td contenteditable ng-model="row.category">{{row.category}}</td>
+           <!--  <td><input type="button" value="✓" ng-click="tmpUpdate(row,$index,dataTobeUpdated)" /></td> -->
           </tr>
           </tbody>
         </table>      
@@ -38,7 +40,7 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" ng-click="createMenuItem(hotel)">Submit</button>
+        <button type="submit" class="btn btn-default" ng-click="updateMenuItem(dataTobeUpdated,row)">Update</button>
       </div>
     </div>
   </form>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myNewProjectApp')
-  .factory('restro',['$http','$q', function ($http,$q) {
+  .factory('restroMain',['$http','$q', function ($http,$q) {
     // Public API here
     return {
       createMenuBasedOnHotel: function (menuData) {

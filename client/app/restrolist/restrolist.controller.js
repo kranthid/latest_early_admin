@@ -9,11 +9,19 @@ angular.module('myNewProjectApp')
     }
     $scope.removeMenuItem = function(getMenuDetails){
     		console.log("Item to be deleted >>",getMenuDetails);
-    		restroser.deleteRecipeItem(getMenuDetails).then(function(res){
-    			$scope.deletionResult = "Hotel was deleted successfully";
-    			$state.reload();
-    		},function(error){
-    			$scope.deletionResult = "Some error occured"
-    		})
+            var deleteDecision = prompt("Are you sure...Then type DELETE");
+            if(deleteDecision == "DELETE"){
+                restroser.deleteHotelItem(getMenuDetails).then(function(res){
+                    $scope.deletionResult = "Hotel was deleted successfully";
+                    $state.reload();
+                },function(error){
+                    $scope.deletionResult = "Some error occured"
+                })
+
+            }else{
+                alert("Your Menu Item is not yet deleted")
+
+            }
+
     }
-  }]);
+  }])
