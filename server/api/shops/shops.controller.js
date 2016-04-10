@@ -11,7 +11,7 @@
 
 import _ from 'lodash';
 var Shops = require('./shops.model');
-var mongoPromise = require('mongodb-bluebird');
+//var mongoPromise = require('mongodb-bluebird');
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -107,21 +107,7 @@ export function destroy(req, res) {
 
 export function customUpdate(req,res){
   console.log("req is >>>>>>>>>>>>>",Shops.findAndModify);
-/*Shops.findAndUpdateAsync(
-  { "_id": req.params.id },
-  { "$set": { 
-        "name" :req.body.name,
-        "location" :req.body.location,
-        "special" : [ ],
-        "mcard" : req.body.mcard
-  }},
-  { "new": true},
-  function(err,doc) {
-    if (err) throw err;
-    console.log( doc );
-    res.send(doc)
-  }
-);*/
+
 Shops.update({_id:req.params.id},req.body,{new:true},function(err,data){
   if(err){
     res.status(500);

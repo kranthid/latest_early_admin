@@ -2,7 +2,7 @@
 
 angular.module('myNewProjectApp')
 .controller('RestroCtrl', customCrudTable)
-  .controller('RestroCtrl',['$scope','restroMain',  function ($scope,restro) {
+  .controller('RestroCtrl',['$scope','restroMain','$state', function ($scope,restro,$state) {
     $scope.message = 'Hello';
     $scope.mitems = []
     $scope.createMenuItem = function(input){
@@ -13,8 +13,8 @@ angular.module('myNewProjectApp')
             var tmp = data.text.split('|')   
             var tmpObj = {"name":tmp[0],"price":tmp[1],"category":tmp[2]} 
         }else{
-            var tmp = data.split('|')
-            var tmpObj = {"name":tmp[0],"price":tmp[1],"category":tmp[2]}            
+            var tmp = data;
+            var tmpObj = {"name":tmp["name"],"price":tmp["price"],"category":tmp["category"]}            
         }
     	console.log("tmp is >>>",tmpObj)
 		input.items[index] = tmpObj
@@ -29,7 +29,8 @@ angular.module('myNewProjectApp')
     	return restro.createMenuBasedOnHotel(hotelObj).then(function(result){
     		console.log("result is >>",result);
     		if(result.data){
-    			$scope.result = "Menu item was added successfully";	
+    			$scope.result = "Menu item was added successfully";
+                $state.transitionTo('restrolist');	
     		}
     	},function(err){
     		console.log("err is >>>",err);
