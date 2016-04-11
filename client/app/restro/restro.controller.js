@@ -20,10 +20,11 @@ angular.module('myNewProjectApp')
 		input.items[index] = tmpObj
 		})
 		var hotelObj = {
-    		name : input.title,
+    		title : input.title,
     		location : input.location,
     		mcard : input.items,
-    		special : []
+    		special : [],
+            tagline:input.tagline
     	};
 
     	return restro.createMenuBasedOnHotel(hotelObj).then(function(result){

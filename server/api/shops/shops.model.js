@@ -3,7 +3,7 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var ShopsSchema = new mongoose.Schema({
-  name: String,
+  title: String,
   location: String,
   mcard: {
   	type:Array,
@@ -12,7 +12,8 @@ var ShopsSchema = new mongoose.Schema({
   special: {
   	type:Array,
   	required:false
-  }
+  },
+  tagline:String
 });
 
 export default mongoose.model('Shops', ShopsSchema);

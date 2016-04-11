@@ -106,8 +106,6 @@ export function destroy(req, res) {
 }
 
 export function customUpdate(req,res){
-  console.log("req is >>>>>>>>>>>>>",Shops.findAndModify);
-
 Shops.update({_id:req.params.id},req.body,{new:true},function(err,data){
   if(err){
     res.status(500);
@@ -117,6 +115,15 @@ Shops.update({_id:req.params.id},req.body,{new:true},function(err,data){
     res.send(data);
   }
 })
-
-
+}
+export function getShopsList(req,res){
+Shops.find({},"location tagline title",function(err,data){
+  if(err){
+    res.status(500);
+    res.send({message:"Some thing went wrong"})
+  }else{
+    res.status(200);
+    res.send(data);
+  }
+})
 }
